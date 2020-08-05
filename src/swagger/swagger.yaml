@@ -1,0 +1,148 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger Proffy API
+  description: Application API to Proffy fullstack app
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  contact:
+    email: silvagustavo@me.com
+host: 'localhost:3333'
+basePath: /api/v1
+tags:
+  - name: Class
+    description: API for classes
+  - name: Connection
+    description: API for connections
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /classes:
+    post:
+      tags:
+        - Class
+      summary: Create new class in system
+      description: ""
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Class that we want to create
+          required: true
+          schema:
+            $ref: '#/definitions/Class'
+      responses:
+        '201':
+          description: New class is created
+        '400':
+          description: Unexpected error while creating new class.
+    get:
+      tags:
+        - Class
+      summary: Get all classes in system
+      description: ""
+      produces:
+        - application/json
+      parameters:
+        - name: week_day
+          in: query
+          required: false
+          description: Day of the week
+          type: number
+        - name: subject
+          in: query
+          required: false
+          description: Subject of the class
+          type: string
+        - name: time
+          in: query
+          required: false
+          description: Time of the class
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Class'
+        '400':
+          description: Missing filters to search classes.
+  /connections:
+    get:
+      tags:
+        - Connection
+      summary: Get total of connections
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TotalConnection'
+    post:
+      summary: Create a new connection
+      tags:
+        - Connection
+      parameters:
+        - name: user
+          in: body
+          description: User with new values of id
+          schema:
+            $ref: '#/definitions/User'   
+      responses:
+        '201':
+          description: Connection has been created
+definitions:
+  Class:
+    required:
+      - name
+      - avatar
+      - whatsapp
+      - bio
+      - subject
+      - cost
+    properties:
+      id: 
+        type: number
+      name:
+        type: string
+      avatar:
+        type: string
+      whatsapp:
+        type: string
+        uniqueItems: true
+      bio:
+        type: string
+      cost:
+        type: number
+      schedule:
+        type: array
+        items:
+          $ref: '#/definitions/Schedule'
+  Schedule:
+    required: 
+      - week_day
+      - from
+      - to
+    properties:
+      week_day:
+        type: number
+      from:
+        type: string
+      to:
+        type: string
+  User:
+    required:
+      - user_id
+    properties:
+      user_id:
+        type: number
+  Total:
+    properties:
+      total:
+        type: number
