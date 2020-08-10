@@ -1,6 +1,8 @@
 # Proffy - backend
 
 [![license](https://img.shields.io/github/license/ajaymache/travis-ci-with-github.svg)](https://opensource.org/licenses/MIT)&nbsp;&nbsp;
+[![nodejs](https://img.shields.io/badge/Server-Node.js-%23339933?style=flat-square&logo=node.js)](https://nodejs.org/)&nbsp;&nbsp;
+[![typescript](https://img.shields.io/badge/-TypeScript-%23007ACC?style=flat-square&logo=TYPESCRIPT)](https://www.typescriptlang.org/)&nbsp;&nbsp;
 
 ## Proffy 1.0
 
