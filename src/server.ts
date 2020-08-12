@@ -12,4 +12,4 @@ app.use(express.json())
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc))
 app.use('/api/v1', routes)
 
-app.listen(3333)
+export { app }
