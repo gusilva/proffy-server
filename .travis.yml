@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+  - "12"
+  - "13"
+
+services:
+  - mysql
+
+test:
+  adapter: mysql
+  database: proffy
+  username: docker
+  encoding: utf8
+
+script:
+  - yarn test
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS proffy;''
+
+cache:
+  directories:
+    - "node_modules"
+
