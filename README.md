@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/QYrMdY2/intro.png" alt="Proffy" width="320" style="background-color: blueviolet">
+  <img src="./docs/proffy2_0.png" alt="Proffy" width="346">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
