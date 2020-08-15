@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  proffy-db:
+    image: mysql:8.0.11
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: proffy_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: proffy
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-db/:/var/lib/mysql
+volumes:
+  my-db:
+
+
