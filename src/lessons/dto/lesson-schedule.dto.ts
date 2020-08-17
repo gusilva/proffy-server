@@ -1,7 +1,7 @@
 import { Weekday } from '../weekday.enum';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional } from 'class-validator';
-import { Schedule } from '../schedule.entity';
+import { Schedule } from '../entity/schedule.entity';
 
 export class LessonScheduleDto {
   @IsOptional()

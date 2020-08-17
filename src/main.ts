@@ -9,7 +9,8 @@ async function bootstrap() {
     .setTitle('Swagger Proffy API')
     .setDescription('Application API to Proffy fullstack app')
     .setVersion('1.0')
-    .addTag('lessons')
+    .addTag('lessons', 'Endpoint related to lessons and their time table.')
+    .addTag('auth', 'Endpoint related authentication and token generation.')
     .addBearerAuth()
     .build();
 

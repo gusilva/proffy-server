@@ -4,7 +4,7 @@ import {
   ConflictException,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { User } from '../../src/auth/user.entity';
+import { User } from '../../src/auth/entity/user.entity';
 import * as bcrypt from 'bcrypt';
 
 const mockCredentialsDto = {

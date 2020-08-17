@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { User } from './user.entity';
+import { User } from './entity/user.entity';
 import { CredentialsDto } from './dto/credentials.dto';
 import * as bcrypt from 'bcrypt';
 import {
@@ -26,7 +26,7 @@ export class UserRepository extends Repository<User> {
       if (error.code === 'ER_DUP_ENTRY') {
         throw new ConflictException('Email already exists.');
       } else {
-        throw new InternalServerErrorException();
+        throw new InternalServerErrorException(error.message);
       }
     }
   }

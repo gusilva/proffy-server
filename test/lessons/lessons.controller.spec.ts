@@ -16,25 +16,51 @@ const mockUser = {
   recover: jest.fn(),
   reload: jest.fn(),
   lessons: [],
-  validatePassword: jest.fn()
+  validatePassword: jest.fn(),
 };
+
+const lessonExpected = [
+  {
+    lessonId: 1,
+    subject: 'Math',
+    cost: 10,
+    schedules: [
+      {
+        weekday: 2,
+        startTime: '08:00',
+        endTime: '10:00',
+      },
+    ],
+  },
+  {
+    lessonId: 2,
+    subject: 'History',
+    cost: 100,
+    schedules: [
+      {
+        weekday: 3,
+        startTime: '18:00',
+        endTime: '19:00',
+      },
+    ],
+  },
+];
 
 describe('Lessons Controller', () => {
   let controller: LessonsController;
-  let service: LessonsService
+  let service: LessonsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [LessonsController],
       providers: [
-        { provide: LessonsService,
-        useValue: {
-          getLessons: jest.fn().mockResolvedValue([
-            { id: 1, subject: "Math", cost: 10, userId: 1 },
-            { id: 2, subject: "Math", cost: 20, userId: 1 },
-          ])
-        }
-      }]
+        {
+          provide: LessonsService,
+          useValue: {
+            getLessons: jest.fn().mockResolvedValue(lessonExpected),
+          },
+        },
+      ],
     }).compile();
 
     controller = module.get<LessonsController>(LessonsController);
@@ -46,11 +72,6 @@ describe('Lessons Controller', () => {
   });
 
   it('should get a array of lessons', () => {
-    expect(controller.getLessons(mockUser)).resolves.toEqual([
-      { id: 1, subject: "Math", cost: 10, userId: 1 },
-      { id: 2, subject: "Math", cost: 20, userId: 1 },
-    ])
+    expect(controller.getLessons(mockUser)).resolves.toEqual(lessonExpected);
   });
-
-
 });

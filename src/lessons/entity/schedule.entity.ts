@@ -5,10 +5,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Weekday } from './weekday.enum';
+import { Weekday } from '../weekday.enum';
 import { Lesson } from './lesson.entity';
 import { Exclude } from 'class-transformer';
-import { LessonScheduleDto } from './dto/lesson-schedule.dto';
+import { LessonScheduleDto } from '../dto/lesson-schedule.dto';
 
 @Entity()
 export class Schedule extends BaseEntity {

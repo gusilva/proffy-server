@@ -6,19 +6,23 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { User } from '../auth/user.entity';
+import { User } from '../../auth/entity/user.entity';
 import { Schedule } from './schedule.entity';
 import { Exclude } from 'class-transformer';
-import { CreateLessonDto } from './dto/create-lesson.dto';
+import { CreateLessonDto } from '../dto/create-lesson.dto';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Lesson extends BaseEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   subject: string;
 
+  @ApiProperty()
   @Column()
   cost: number;
 
@@ -45,7 +49,13 @@ export class Lesson extends BaseEntity {
     dto.lessonId = entity.id;
     dto.subject = entity.subject;
     dto.cost = entity.cost;
-    dto.schedules = Schedule.toDtoList(entity.schedules);
+    dto.schedules = entity.schedules
+      ? Schedule.toDtoList(entity.schedules)
+      : [];
     return dto;
+  }
+
+  static toDtoList(lessons: Lesson[]) {
+    return lessons.map(lesson => this.toDto(lesson));
   }
 }
