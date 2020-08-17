@@ -34,6 +34,17 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 
+## Swagger API
+```bash
+http://localhost:3000/api
+```
+
+<div align="center">
+  <img src="./docs/swagger.png" alt="Swagger" width="540">
+</div>
+
+
+
 ## Test
 
 ```bash
